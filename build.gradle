@@ -1,0 +1,25 @@
+group 'com.epam.homework'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+test.testLogging.showStandardStreams = true
+
+dependencies {
+
+    compile 'org.springframework:spring-context:+',
+            'org.apache.logging.log4j:log4j-core:+',
+            'org.eclipse.persistence:javax.persistence:2.2.0'
+
+    testCompile 'org.junit.jupiter:junit-jupiter-api:+',
+                'org.hamcrest:java-hamcrest:+',
+                'org.springframework:spring-test:+'
+
+    compileOnly 'org.projectlombok:lombok:+'
+}
