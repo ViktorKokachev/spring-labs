@@ -10,7 +10,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class HelloWorldTest {
 
-	protected static final String APPLICATION_CONTEXT_XML_FILE_NAME = "classpath:application-context.xml";
+	protected static final String APPLICATION_CONTEXT_XML_FILE_NAME = "src/main/resources/application-context.xml";
 
 	private UsualPerson expectedPerson;
 
