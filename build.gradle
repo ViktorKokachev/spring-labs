@@ -19,11 +19,16 @@ dependencies {
             'org.eclipse.persistence:javax.persistence:2.2.0',
             'org.springframework:spring-aop:5.0.0.RELEASE',
             'org.springframework:spring-aspects:5.0.0.RELEASE',
-            'aopalliance:aopalliance:1.0'
+            'aopalliance:aopalliance:1.0',
+            'org.springframework:spring-jdbc:+',
+            'com.mchange:c3p0:+'
 
     testCompile 'org.junit.jupiter:junit-jupiter-api:+',
                 'org.hamcrest:java-hamcrest:+',
                 'org.springframework:spring-test:+'
 
     compileOnly 'org.projectlombok:lombok:+'
+
+    runtime 'com.h2database:h2:+'
+    runtime 'org.hsqldb:hsqldb:+'
 }
