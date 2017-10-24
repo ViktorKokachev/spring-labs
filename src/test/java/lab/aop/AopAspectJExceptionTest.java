@@ -13,10 +13,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:application-context-aop.xml")
 
 public class AopAspectJExceptionTest {
 
@@ -29,21 +30,17 @@ public class AopAspectJExceptionTest {
     @BeforeEach
     public void setUp() throws Exception {
 
-//        customer.setBroke(true);
+        customer.setBroke(true);
     }
 
     @Test
     public void testAfterThrowingAdvice() {
 
-        bar.sellSquishee(customer);
-
-        Throwable exception = assertThrows(CustomerBrokenException.class,
+        assertThrows(CustomerBrokenException.class,
                 () -> {
-                    logic;
+                    bar.sellSquishee(customer);
+                    assertTrue(AopLog.getStringValue().contains("Hmmm..."), "Customer is not broken ");
+                    System.out.println(AopLog.getStringValue());
                 });
-
-
-        assertThat("Customer is not broken ", is(AopLog.getStringValue().contains("Hmmm...")));
-        System.out.println(AopLog.getStringValue());
     }
 }
