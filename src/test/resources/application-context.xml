@@ -28,12 +28,14 @@
         <property name="codeName" value="RU"/>
     </bean>
 
-    <bean id="timeWeaver"
-          class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="H2"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
+    </bean>
 
-    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-          p:dataSource-ref="dataSource"
-          p:persistenceUnitName="springframework.lab.orm.jpa"
-          p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
-          p:loadTimeWeaver-ref="timeWeaver"/>
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+        <property name="packagesToScan" value="lab.model, lab.dao.jpa"/>
+    </bean>
 </beans>

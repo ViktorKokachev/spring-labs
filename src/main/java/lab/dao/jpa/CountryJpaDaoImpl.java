@@ -15,18 +15,7 @@ public class CountryJpaDaoImpl extends AbstractJpaDao implements CountryDao {
 	@Override
 	public void save(Country country) {
 		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-
-		if (country == null) {
-			em.persist(country);
-		} else {
-			em.merge(country);
-		}
-
-		if (em != null) {
-			em.getTransaction().commit();
-			em.close();
-		}
+		em.persist(country);
 	}
 
 	@Override

@@ -1,21 +1,24 @@
 package lab.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
-@javax.persistence.Entity
-@javax.persistence.Table(name = "COUNTRY")
+
+@Table(name = "country")
+@Entity
 public class Country implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
 
+	@Column(name = "name")
 	private String name;
 
+	@Column(name = "code_name")
 	private String codeName;
 
 	public Country() {
@@ -32,8 +35,7 @@ public class Country implements Serializable{
 		this.codeName = codeName;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public int getId() {
 		return id;
 	}
@@ -42,7 +44,6 @@ public class Country implements Serializable{
 		this.id = id;
 	}
 
-	@Column(name = "NAME")
 	public String getName() {
 		return name;
 	}
@@ -51,7 +52,7 @@ public class Country implements Serializable{
 		this.name = name;
 	}
 
-	@Column(name = "CODE_NAME")
+
 	public String getCodeName() {
 		return codeName;
 	}
