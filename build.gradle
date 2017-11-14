@@ -21,13 +21,21 @@ dependencies {
             'org.springframework:spring-aspects:5.0.0.RELEASE',
             'aopalliance:aopalliance:1.0',
             'org.springframework:spring-jdbc:+',
-            'com.mchange:c3p0:+'
+            'com.mchange:c3p0:+',
+            'org.hibernate:hibernate-spatial:+',
+            'org.hibernate:hibernate-java8:+',
+            'org.hibernate:hibernate-validator:+',
+            'org.springframework:spring-orm:+',
+            'org.hibernate:hibernate:+',
+            'org.hibernate.hibernate.javax.persistence:hibernate-jpa2.0-api:+'
 
     testCompile 'org.junit.jupiter:junit-jupiter-api:+',
                 'org.hamcrest:java-hamcrest:+',
                 'org.springframework:spring-test:+'
 
-    compileOnly 'org.projectlombok:lombok:+'
+    compileOnly 'org.projectlombok:lombok:+',
+                'org.apache.tomcat:tomcat-api:+',
+                'org.apache.tomcat:tomcat-jsp-api:+',
 
     runtime 'com.h2database:h2:+'
     runtime 'org.hsqldb:hsqldb:+'

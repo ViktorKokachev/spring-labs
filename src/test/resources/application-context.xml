@@ -5,6 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <import resource="application-context-jdbc.xml"/>
+    <context:component-scan base-package="lab.model, lab.dao" />
+
     <bean id="person" class="lab.model.UsualPerson">
         <property name="name" value="John Smith"/>
         <property name="age" value="35"/>
@@ -24,4 +27,13 @@
         <property name="name" value="Russia"/>
         <property name="codeName" value="RU"/>
     </bean>
+
+    <bean id="timeWeaver"
+          class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:persistenceUnitName="springframework.lab.orm.jpa"
+          p:persistenceProviderClass="org.hibernate.jpa.HibernatePersistenceProvider"
+          p:loadTimeWeaver-ref="timeWeaver"/>
 </beans>

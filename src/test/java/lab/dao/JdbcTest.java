@@ -21,7 +21,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class JdbcTest {
 
     @Autowired
-    private CountryDao countryDao;
+    private CountryJdbcDao countryDao;
 
     private List<Country> expectedCountryList = new ArrayList<Country>();
     private List<Country> expectedCountryListStartsWithA = new ArrayList<Country>();
@@ -64,8 +64,8 @@ public class JdbcTest {
     }
 
     private void initExpectedCountryLists() {
-        for (int i = 0; i < CountryDao.COUNTRY_INIT_DATA.length; i++) {
-            String[] countryInitData = CountryDao.COUNTRY_INIT_DATA[i];
+        for (int i = 0; i < CountryJdbcDao.COUNTRY_INIT_DATA.length; i++) {
+            String[] countryInitData = CountryJdbcDao.COUNTRY_INIT_DATA[i];
             Country country = new Country(i, countryInitData[0], countryInitData[1]);
             expectedCountryList.add(country);
             if (country.getName().startsWith("A")) {
